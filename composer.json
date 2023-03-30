@@ -1,0 +1,16 @@
+{
+    "name": "pagseguro/pagseguro-api",
+    "description": "Pagseguro API",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "PagseguroApi\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.4.0",
+        "netresearch/jsonmapper": "^4.1"
+    }
+}
