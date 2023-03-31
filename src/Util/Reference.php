@@ -31,6 +31,8 @@ abstract class Reference {
                 $link = "https://dev.pagseguro.uol.com.br/reference/post-sessions";
 			break;
 		}
+
+        return [$name, $link];
     }
 
 }
