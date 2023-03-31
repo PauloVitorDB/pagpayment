@@ -6,12 +6,14 @@ use Exception;
 class Response {
 
     private $response;
+    private $request_response;
     private $http_code;
     private $success;
 
-    public function __construct($response, $http_code, ResponseHttpRange $response_http_range) {
+    public function __construct($response, $request_response, $http_code, ResponseHttpRange $response_http_range) {
        
         $this->response = $response;
+        $this->request_response = $request_response;
         $this->http_code = $http_code;
 
         if(
@@ -114,6 +116,26 @@ class Response {
     public function setSuccess($success)
     {
         $this->success = $success;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of request_response
+     */ 
+    public function getRequestResponse()
+    {
+        return $this->request_response;
+    }
+
+    /**
+     * Set the value of request_response
+     *
+     * @return  self
+     */ 
+    public function setRequestResponse($request_response)
+    {
+        $this->request_response = $request_response;
 
         return $this;
     }

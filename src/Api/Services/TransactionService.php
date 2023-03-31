@@ -46,7 +46,7 @@ class TransactionService extends BaseServiceRequest {
         $orderTransactionDto = $mapper->map($response, new OrderTransactionDto());
       
         $responseHttpRange = new ResponseHttpRange(200, 299);
-        return ( new Response($orderTransactionDto, $http_code, $responseHttpRange) );
+        return ( new Response($orderTransactionDto, $response, $http_code, $responseHttpRange) );
         
     }
 
@@ -64,7 +64,7 @@ class TransactionService extends BaseServiceRequest {
         $orderTransactionDto = $mapper->map($response, new OrderTransactionDto());
        
         $responseHttpRange = new ResponseHttpRange(200, 299);
-        return ( new Response($orderTransactionDto, $http_code, $responseHttpRange) );
+        return ( new Response($orderTransactionDto, $response, $http_code, $responseHttpRange) );
         
     }
 

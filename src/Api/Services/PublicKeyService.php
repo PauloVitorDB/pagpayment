@@ -41,7 +41,7 @@ class PublicKeyService extends BaseServiceRequest {
         $publicKeyDto = $mapper->map($response, new PublicKeyDto());
        
         $responseHttpRange = new ResponseHttpRange(200, 299);
-        return ( new Response($publicKeyDto, $http_code, $responseHttpRange) );
+        return ( new Response($publicKeyDto, $response, $http_code, $responseHttpRange) );
         
     }
 
@@ -61,7 +61,7 @@ class PublicKeyService extends BaseServiceRequest {
         $publicKeyDto = $mapper->map($response, new PublicKeyDto());
        
         $responseHttpRange = new ResponseHttpRange(200, 299);
-        return ( new Response($publicKeyDto, $http_code, $responseHttpRange) );
+        return ( new Response($publicKeyDto, $response, $http_code, $responseHttpRange) );
         
     }
 

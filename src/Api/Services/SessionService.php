@@ -41,7 +41,7 @@ class SessionService extends BaseServiceRequest {
         $sessionDto = $mapper->map($response, new SessionDto());
        
         $responseHttpRange = new ResponseHttpRange(200, 299);
-        return ( new Response($sessionDto, $http_code, $responseHttpRange) );
+        return ( new Response($sessionDto, $response, $http_code, $responseHttpRange) );
         
     }
 
