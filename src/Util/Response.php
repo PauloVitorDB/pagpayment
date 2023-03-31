@@ -5,6 +5,7 @@ use Exception;
 
 class Response {
 
+    private $method;
     private $response;
     private $request_response;
     private $body;
@@ -13,8 +14,9 @@ class Response {
     private $http_code;
     private $success;
 
-    public function __construct($response, $body, $request_response, $request_headers, $request_url, $http_code, ResponseHttpRange $response_http_range) {
+    public function __construct($method, $response, $body, $request_response, $request_headers, $request_url, $http_code, ResponseHttpRange $response_http_range) {
        
+        $this->method = $method;
         $this->response = $response;
         $this->request_response = $request_response;
         $this->http_code = $http_code;
@@ -201,6 +203,26 @@ class Response {
     public function setBody($body)
     {
         $this->body = $body;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of method
+     */ 
+    public function getMethod()
+    {
+        return $this->method;
+    }
+
+    /**
+     * Set the value of method
+     *
+     * @return  self
+     */ 
+    public function setMethod($method)
+    {
+        $this->method = $method;
 
         return $this;
     }

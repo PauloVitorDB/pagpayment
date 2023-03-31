@@ -47,6 +47,7 @@ class TransactionService extends BaseServiceRequest {
       
         $responseHttpRange = new ResponseHttpRange(200, 299);
         return ( new Response(
+            ApiRest::POST,
             $orderTransactionDto,
             $body,
             $response,
@@ -74,6 +75,7 @@ class TransactionService extends BaseServiceRequest {
        
         $responseHttpRange = new ResponseHttpRange(200, 299);
         return ( new Response(
+            ApiRest::GET,
             $orderTransactionDto,
             '',
             $response,

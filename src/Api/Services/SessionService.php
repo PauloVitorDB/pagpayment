@@ -42,6 +42,7 @@ class SessionService extends BaseServiceRequest {
        
         $responseHttpRange = new ResponseHttpRange(200, 299);
         return ( new Response(
+            ApiRest::POST,
             $sessionDto,
             '',
             $response,
