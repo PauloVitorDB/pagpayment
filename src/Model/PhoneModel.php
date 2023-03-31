@@ -12,14 +12,17 @@ class PhoneModel implements JsonSerializable {
     private $phone_number;
     private $type;
 
+    const TYPE_MOBILE = "MOBILE";
+    const TYPE_HOME = "HOME";
+
     /**
      * @param \PagseguroApi\Model\AddressModel $address
      **/
-    public function __construct($country_DDI, $area_DDD, $phone_number) {
+    public function __construct($country_DDI, $area_DDD, $phone_number, $type) {
         $this->country_DDI = $country_DDI;
         $this->area_DDD = $area_DDD;
         $this->phone_number = $phone_number;
-        $this->type = "MOBILE";
+        $this->type = $type;
     }
 
     public function jsonSerialize() {

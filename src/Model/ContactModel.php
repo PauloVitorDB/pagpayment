@@ -18,12 +18,13 @@ class ContactModel implements JsonSerializable {
     */
     private $phones = [];
 
-    public function addPhone($ddi, $ddd, $number) {
+    public function addPhone($ddi, $ddd, $number, $type) {
 
         $phone = new PhoneModel(
             $ddi,
             $ddd,
-            $number
+            $number,
+            $type
         );
 
         array_push($this->phones, $phone);
