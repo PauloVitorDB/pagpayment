@@ -48,6 +48,7 @@ class TransactionService extends BaseServiceRequest {
         $responseHttpRange = new ResponseHttpRange(200, 299);
         return ( new Response(
             $orderTransactionDto,
+            $body,
             $response,
             $req_headers,
             $url,
@@ -74,6 +75,7 @@ class TransactionService extends BaseServiceRequest {
         $responseHttpRange = new ResponseHttpRange(200, 299);
         return ( new Response(
             $orderTransactionDto,
+            '',
             $response,
             $req_headers,
             $url,

@@ -43,6 +43,7 @@ class SessionService extends BaseServiceRequest {
         $responseHttpRange = new ResponseHttpRange(200, 299);
         return ( new Response(
             $sessionDto,
+            '',
             $response,
             $req_headers,
             $url,

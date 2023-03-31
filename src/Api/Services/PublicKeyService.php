@@ -43,6 +43,7 @@ class PublicKeyService extends BaseServiceRequest {
         $responseHttpRange = new ResponseHttpRange(200, 299);
         return ( new Response(
             $publicKeyDto,
+            $body,
             $response,
             $req_headers,
             $url,
@@ -71,6 +72,7 @@ class PublicKeyService extends BaseServiceRequest {
         $responseHttpRange = new ResponseHttpRange(200, 299);
         return ( new Response(
             $publicKeyDto,
+            '',
             $response,
             $req_headers,
             $url,

@@ -7,18 +7,20 @@ class Response {
 
     private $response;
     private $request_response;
+    private $body;
     private $request_headers;
     private $request_url;
     private $http_code;
     private $success;
 
-    public function __construct($response, $request_response, $request_headers, $request_url, $http_code, ResponseHttpRange $response_http_range) {
+    public function __construct($response, $body, $request_response, $request_headers, $request_url, $http_code, ResponseHttpRange $response_http_range) {
        
         $this->response = $response;
         $this->request_response = $request_response;
         $this->http_code = $http_code;
         $this->request_headers = $request_headers;
         $this->request_url = $request_url;
+        $this->body = $body;
 
         if(
             $http_code >= $response_http_range->getStartHttpCode()
@@ -179,6 +181,26 @@ class Response {
     public function setRequestUrl($request_url)
     {
         $this->request_url = $request_url;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of body
+     */ 
+    public function getBody()
+    {
+        return $this->body;
+    }
+
+    /**
+     * Set the value of body
+     *
+     * @return  self
+     */ 
+    public function setBody($body)
+    {
+        $this->body = $body;
 
         return $this;
     }

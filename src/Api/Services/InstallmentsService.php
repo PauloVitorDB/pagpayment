@@ -41,6 +41,7 @@ class InstallmentsService extends BaseServiceRequest {
         $responseHttpRange = new ResponseHttpRange(200, 299);
         return ( new Response(
             $response,
+            '',
             $response,
             $req_headers,
             $url,
