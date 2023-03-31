@@ -7,14 +7,18 @@ class Response {
 
     private $response;
     private $request_response;
+    private $request_headers;
+    private $request_url;
     private $http_code;
     private $success;
 
-    public function __construct($response, $request_response, $http_code, ResponseHttpRange $response_http_range) {
+    public function __construct($response, $request_response, $request_headers, $request_url, $http_code, ResponseHttpRange $response_http_range) {
        
         $this->response = $response;
         $this->request_response = $request_response;
         $this->http_code = $http_code;
+        $this->request_headers = $request_headers;
+        $this->request_url = $request_url;
 
         if(
             $http_code >= $response_http_range->getStartHttpCode()
@@ -59,7 +63,6 @@ class Response {
 
     }
 
-
     /**
      * Get the value of response
      */ 
@@ -83,7 +86,7 @@ class Response {
     /**
      * Get the value of http_code
      */ 
-    public function getHttp_code()
+    public function getHttpCode()
     {
         return $this->http_code;
     }
@@ -93,7 +96,7 @@ class Response {
      *
      * @return  self
      */ 
-    public function setHttp_code($http_code)
+    public function setHttpCode($http_code)
     {
         $this->http_code = $http_code;
 
@@ -136,6 +139,46 @@ class Response {
     public function setRequestResponse($request_response)
     {
         $this->request_response = $request_response;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of request_headers
+     */ 
+    public function getRequestHeaders()
+    {
+        return $this->request_headers;
+    }
+
+    /**
+     * Set the value of request_headers
+     *
+     * @return  self
+     */ 
+    public function setRequestHeaders($request_headers)
+    {
+        $this->request_headers = $request_headers;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of request_url
+     */ 
+    public function getRequestUrl()
+    {
+        return $this->request_url;
+    }
+
+    /**
+     * Set the value of request_url
+     *
+     * @return  self
+     */ 
+    public function setRequestUrl($request_url)
+    {
+        $this->request_url = $request_url;
 
         return $this;
     }

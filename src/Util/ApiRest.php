@@ -24,9 +24,12 @@ final class ApiRest implements RequestInterface {
         
         $curl = curl_init(); 
 
-        curl_setopt($curl, CURLOPT_URL, $this->url . $endpoint);
+        $url = $this->url . $endpoint;
+        curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, array_merge($this->default_headers, $headers));
+        
+        $req_headers =  array_merge($this->default_headers, $headers);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $req_headers);
 
         switch($method_type) {
             case self::POST:
@@ -51,7 +54,6 @@ final class ApiRest implements RequestInterface {
                 }
             break;
         }
-
         
         $response = curl_exec($curl);
         if($parse_response) $response = json_decode($response);
@@ -62,7 +64,9 @@ final class ApiRest implements RequestInterface {
 
         return [
             $response,
-            $http_code
+            $http_code,
+            $req_headers, 
+            $url
         ];
 
     }

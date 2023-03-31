@@ -30,7 +30,7 @@ class InstallmentsService extends BaseServiceRequest {
 
         $endpoint .= $installmentsModel->toQueryParameters();
 
-        list($response, $http_code) = $this->request->defaultRequest(
+        list($response, $http_code, $req_headers, $url) = $this->request->defaultRequest(
             $endpoint,
             ApiRest::GET,
             ["Content-Type: application/json"]
@@ -39,7 +39,15 @@ class InstallmentsService extends BaseServiceRequest {
         Response::validate($response, $http_code);
        
         $responseHttpRange = new ResponseHttpRange(200, 299);
-        return ( new Response($response, $response, $http_code, $responseHttpRange) );
+        return ( new Response(
+            $response,
+            $response,
+            $req_headers,
+            $url,
+            $http_code,
+            $responseHttpRange
+            )
+        );
         
     }
 

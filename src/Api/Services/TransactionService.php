@@ -33,7 +33,7 @@ class TransactionService extends BaseServiceRequest {
 
         $body = json_encode($order);
 
-        list($response, $http_code) = $this->request->defaultRequest(
+        list($response, $http_code, $req_headers, $url) = $this->request->defaultRequest(
             $endpoint,
             ApiRest::POST,
             ["Content-Type: application/json"],
@@ -46,7 +46,15 @@ class TransactionService extends BaseServiceRequest {
         $orderTransactionDto = $mapper->map($response, new OrderTransactionDto());
       
         $responseHttpRange = new ResponseHttpRange(200, 299);
-        return ( new Response($orderTransactionDto, $response, $http_code, $responseHttpRange) );
+        return ( new Response(
+            $orderTransactionDto,
+            $response,
+            $req_headers,
+            $url,
+            $http_code,
+            $responseHttpRange
+            )
+        );
         
     }
 
@@ -54,7 +62,7 @@ class TransactionService extends BaseServiceRequest {
 
         $endpoint = "/orders/$pagseguro_order_id";
 
-        list($response, $http_code) = $this->request->defaultRequest(
+        list($response, $http_code, $req_headers, $url) = $this->request->defaultRequest(
             $endpoint,
             ApiRest::GET,
             ["Content-Type: application/json"]
@@ -64,7 +72,15 @@ class TransactionService extends BaseServiceRequest {
         $orderTransactionDto = $mapper->map($response, new OrderTransactionDto());
        
         $responseHttpRange = new ResponseHttpRange(200, 299);
-        return ( new Response($orderTransactionDto, $response, $http_code, $responseHttpRange) );
+        return ( new Response(
+            $orderTransactionDto,
+            $response,
+            $req_headers,
+            $url,
+            $http_code,
+            $responseHttpRange
+            )
+        );
         
     }
 

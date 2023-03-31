@@ -30,7 +30,7 @@ class PublicKeyService extends BaseServiceRequest {
 
         $body = json_encode(["type" => $type]);
 
-        list($response, $http_code) = $this->request->defaultRequest(
+        list($response, $http_code, $req_headers, $url) = $this->request->defaultRequest(
             $endpoint,
             ApiRest::POST,
             ["Content-Type: application/json"],
@@ -41,7 +41,15 @@ class PublicKeyService extends BaseServiceRequest {
         $publicKeyDto = $mapper->map($response, new PublicKeyDto());
        
         $responseHttpRange = new ResponseHttpRange(200, 299);
-        return ( new Response($publicKeyDto, $response, $http_code, $responseHttpRange) );
+        return ( new Response(
+            $publicKeyDto,
+            $response,
+            $req_headers,
+            $url,
+            $http_code,
+            $responseHttpRange
+            )
+        );
         
     }
 
@@ -49,7 +57,7 @@ class PublicKeyService extends BaseServiceRequest {
 
         $endpoint = "/public-keys/$type";
 
-        list($response, $http_code) = $this->request->defaultRequest(
+        list($response, $http_code, $req_headers, $url) = $this->request->defaultRequest(
             $endpoint,
             ApiRest::GET,
             ["Content-Type: application/json"]
@@ -61,7 +69,15 @@ class PublicKeyService extends BaseServiceRequest {
         $publicKeyDto = $mapper->map($response, new PublicKeyDto());
        
         $responseHttpRange = new ResponseHttpRange(200, 299);
-        return ( new Response($publicKeyDto, $response, $http_code, $responseHttpRange) );
+        return ( new Response(
+            $publicKeyDto,
+            $response,
+            $req_headers,
+            $url,
+            $http_code,
+            $responseHttpRange
+            )
+        );
         
     }
 
