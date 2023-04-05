@@ -9,12 +9,12 @@ class PagseguroApiClient {
 
     public function __construct(
         $access_token,
-        $sandbox_environment = false
+        $sandbox_environment = false,
+        $redirect_uri = ''
     ) {
-        //if(substr($access_token, -1) != "=") $access_token .= "=";
-        
         Authentication::$TOKEN = $access_token;
         Environment::defineEnvironment($sandbox_environment);
+        if(strlen($redirect_uri) > 0) Environment::$APPLICATION_REDIRECT_URI = $redirect_uri;
     }
 
 
@@ -32,6 +32,10 @@ class PagseguroApiClient {
 
     public function getInstallmentsService() {
         return \PagseguroApi\Api\Services\InstallmentsService::getInstance();
+    }
+
+    public function getTokenService() {
+        return \PagseguroApi\Api\Services\TokenService::getInstance();
     }
 
 }
