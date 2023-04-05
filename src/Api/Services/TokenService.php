@@ -56,12 +56,12 @@ class TokenService extends BaseServiceRequest {
         );
       
         $mapper = new \JsonMapper();
-        $publicKeyDto = $mapper->map($response, new TokenDto());
+        $tokenDto = $mapper->map($response, new TokenDto());
        
         $responseHttpRange = new ResponseHttpRange(200, 299);
         return ( new Response(
                 ApiRest::POST,
-                $publicKeyDto,
+                $tokenDto,
                 $body,
                 $response,
                 $req_headers,
