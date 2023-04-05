@@ -9,6 +9,7 @@ use PagseguroApi\Model\OrderModel;
 use PagseguroApi\Util\ApiRest;
 use PagseguroApi\Util\ResponseHttpRange;
 use PagseguroApi\Util\Response;
+use PagseguroApi\Api\Authentication;
 
 class TransactionService extends BaseServiceRequest {
 
@@ -36,7 +37,10 @@ class TransactionService extends BaseServiceRequest {
         list($response, $http_code, $req_headers, $url) = $this->request->defaultRequest(
             $endpoint,
             ApiRest::POST,
-            ["Content-Type: application/json"],
+            [
+                "Content-Type: application/json",
+                "Authorization: Bearer " . Authentication::$USER_TOKEN
+            ],
             $body
         );
       
@@ -67,7 +71,10 @@ class TransactionService extends BaseServiceRequest {
         list($response, $http_code, $req_headers, $url) = $this->request->defaultRequest(
             $endpoint,
             ApiRest::GET,
-            ["Content-Type: application/json"]
+            [
+                "Content-Type: application/json",
+                "Authorization: Bearer " . Authentication::$USER_TOKEN
+            ]
         );
       
         $mapper = new \JsonMapper();

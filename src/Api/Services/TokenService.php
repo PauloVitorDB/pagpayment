@@ -8,6 +8,7 @@ use PagseguroApi\Util\ApiRest;
 use PagseguroApi\Util\ResponseHttpRange;
 use PagseguroApi\Util\Response;
 use PagseguroApi\Api\Environment;
+use PagseguroApi\Api\Authentication;
 
 class TokenService extends BaseServiceRequest {
 
@@ -33,6 +34,7 @@ class TokenService extends BaseServiceRequest {
             "Content-Type: application/json",
             "X_CLIENT_ID: " . $this->client_id,
             "X_CLIENT_SECRET: " . $this->client_secret,
+            "Authorization: Bearer " . Authentication::$APPLICATION_TOKEN
         ];
     }
 
@@ -43,7 +45,7 @@ class TokenService extends BaseServiceRequest {
         $body = json_encode([
             "grant_type" => "authorization_code",
             "code" => $code,
-            "redirect_uri" => Environment::$APPLICATION_REDIRECT_URI,
+            "redirect_uri" => Environment::$APPLICATION_REDIRECT_URI
         ]);
 
         list($response, $http_code, $req_headers, $url) = $this->request->defaultRequest(

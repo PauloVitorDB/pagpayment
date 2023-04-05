@@ -8,11 +8,13 @@ use PagseguroApi\Api\Environment;
 class PagseguroApiClient {
 
     public function __construct(
-        $access_token,
+        $application_token,
+        $user_token = "",
         $sandbox_environment = false,
         $redirect_uri = ''
     ) {
-        Authentication::$TOKEN = $access_token;
+        Authentication::$APPLICATION_TOKEN = $application_token;
+        Authentication::$USER_TOKEN = $user_token;
         Environment::defineEnvironment($sandbox_environment);
         if(strlen($redirect_uri) > 0) Environment::$APPLICATION_REDIRECT_URI = $redirect_uri;
     }

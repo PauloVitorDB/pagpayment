@@ -3,11 +3,11 @@
 namespace PagseguroApi\Api\Services;
 
 use PagseguroApi\Api\BaseServiceRequest;
-use PagseguroApi\Api\Dto\PublicKeyDto;
 use PagseguroApi\Util\ApiRest;
 use PagseguroApi\Util\ResponseHttpRange;
 use PagseguroApi\Util\Response;
 use PagseguroApi\Api\Environment;
+use PagseguroApi\Api\Authentication;
 
 class InstallmentsService extends BaseServiceRequest {
 
@@ -33,7 +33,10 @@ class InstallmentsService extends BaseServiceRequest {
         list($response, $http_code, $req_headers, $url) = $this->request->defaultRequest(
             $endpoint,
             ApiRest::GET,
-            ["Content-Type: application/json"]
+            [
+                "Content-Type: application/json",
+                "Authorization: Bearer " . Authentication::$USER_TOKEN
+            ]
         );
         
         Response::validate($response, $http_code);

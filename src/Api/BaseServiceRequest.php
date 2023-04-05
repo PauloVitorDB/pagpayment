@@ -10,13 +10,7 @@ abstract class BaseServiceRequest {
     protected RequestInterface $request;
 
     public function __construct($BASE_URL) {
-        $this->request = new ApiRest($BASE_URL, $this->defaultHeader());
-    }
-
-    public function defaultHeader() {
-        return [
-            "Authorization: Bearer " . Authentication::$TOKEN,
-        ];
+        $this->request = new ApiRest($BASE_URL);
     }
 
 }
