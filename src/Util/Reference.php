@@ -30,6 +30,14 @@ abstract class Reference {
                 $name = "Criar_uma_sessao";
                 $link = "https://dev.pagseguro.uol.com.br/reference/post-sessions";
 			break;
+            case "create_token":
+                $name = "Obter o access token";
+                $link = "https://dev.pagseguro.uol.com.br/reference/connect-get-access-token";
+			break;
+            case "refresh_token":
+                $name = "Renovar um access token";
+                $link = "https://dev.pagseguro.uol.com.br/reference/connect-refresh";
+			break;
 		}
 
         return [$name, $link];
