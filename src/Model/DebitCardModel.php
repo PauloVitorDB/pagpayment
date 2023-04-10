@@ -5,6 +5,7 @@ use JsonSerializable;
 
 class DebitCardModel implements JsonSerializable {
     
+    private $encrypted;
     private $number;
     private $exp_month;
     private $exp_year;
@@ -55,9 +56,10 @@ class DebitCardModel implements JsonSerializable {
     public function jsonSerialize() {
 
         $json = [
-            "number" => $this->number,
-            "exp_month" => $this->exp_month,
-            "exp_year" => "20" . $this->exp_year,
+            "encrypted" => $this->encrypted,
+            // "number" => $this->number,
+            // "exp_month" => $this->exp_month,
+            // "exp_year" => "20" . $this->exp_year,
             "security_code" => $this->security_code,
             "holder" => $this->holder
         ];
@@ -121,6 +123,26 @@ class DebitCardModel implements JsonSerializable {
     public function setNumber($number)
     {
         $this->number = $number;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of encrypted
+     */ 
+    public function getEncrypted()
+    {
+        return $this->encrypted;
+    }
+
+    /**
+     * Set the value of encrypted
+     *
+     * @return  self
+     */ 
+    public function setEncrypted($encrypted)
+    {
+        $this->encrypted = $encrypted;
 
         return $this;
     }

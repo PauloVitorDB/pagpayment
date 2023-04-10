@@ -48,7 +48,8 @@ class OrderModel implements JsonSerializable {
             "reference_id" => $this->reference_id,
             "customer" => $this->customer,
             "items" => $this->items,
-            "notification_urls" => $this->notification_urls
+            "notification_urls" => $this->notification_urls,
+            "shipping" => $this->shipping
         ];
 
         if(!is_null($this->qr_code)) {
