@@ -18,9 +18,7 @@ class ShippingModel implements JsonSerializable {
     public function jsonSerialize() {
 
         $json = [
-            "shipping" => [
-                "address" => $this->address
-            ]
+            "address" => $this->address
         ];
 
         return $json;
